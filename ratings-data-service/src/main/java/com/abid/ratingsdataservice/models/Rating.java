@@ -32,6 +32,4 @@ public class Rating {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	
-	
 }
