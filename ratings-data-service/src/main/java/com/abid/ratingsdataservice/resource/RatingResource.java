@@ -9,6 +9,7 @@ import com.abid.ratingsdataservice.models.Rating;
 @RestController
 @RequestMapping("/rating")
 public class RatingResource {
+	/*Method for getting movie ratings*/
 	@RequestMapping("/{movieId}")
 	public Rating getMovieRating(@PathVariable("movieId")String movieId) {
 		return new Rating("MOV1", 4);
