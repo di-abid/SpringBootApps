@@ -1,6 +1,5 @@
 package com.abid.moviecatalogservice.resource;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.abid.moviecatalogservice.models.CatalogItem;
 import com.abid.moviecatalogservice.models.Movie;
-import com.abid.moviecatalogservice.models.Rating;
 import com.abid.moviecatalogservice.models.UserRating;
 
 @RestController
@@ -24,9 +22,9 @@ public class MovieCatalogResource {
 	
 	@RequestMapping("/{userId}")
 	public List<CatalogItem> getCatalogItems(@PathVariable("userId")String userId){
-		UserRating ratings = restTemplate.getForObject("http://localhost:8084/rating/users/"+userId, UserRating.class);
+		UserRating ratings = restTemplate.getForObject("http://rating-data-service/rating/users/"+userId, UserRating.class);
 		return ratings.getUserRatings().stream().map(rating -> {
-			Movie movie = restTemplate.getForObject("http://localhost:8083/movie/"+rating.getMovieId(), Movie.class);
+			Movie movie = restTemplate.getForObject("http://movie-info-service/movie/"+rating.getMovieId(), Movie.class);
 			return new CatalogItem(rating.getRating(), movie.getMovieName(), "");
 		})
 		.collect(Collectors.toList());
