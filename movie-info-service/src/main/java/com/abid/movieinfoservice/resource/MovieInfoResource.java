@@ -12,6 +12,15 @@ public class MovieInfoResource {
 	
 	@RequestMapping("/{movieId}")
 	public Movie getMovie(@PathVariable("movieId")String movieId) {
-		return new Movie("MOV1", "Transformers");
+		if("MOV1".equalsIgnoreCase(movieId)) {
+			return new Movie("MOV1", "Transformers");
+		}else if("MOV2".equalsIgnoreCase(movieId)) {
+			return new Movie("MOV2", "Avengers");
+		}else if("MOV3".equalsIgnoreCase(movieId)) {
+			return new Movie("MOV3", "Trooy");
+		}else if("MOV4".equalsIgnoreCase(movieId)) {
+			return new Movie("MOV4", "SpiderMan");
+		}
+		return null;
 	}
 }

@@ -1,4 +1,4 @@
-package com.abid.ratingsdataservice.models;
+package com.abid.moviecatalogservice.models;
 
 public class Rating {
 	private String movieId;
